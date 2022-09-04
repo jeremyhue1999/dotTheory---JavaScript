@@ -1,0 +1,19 @@
+//Add 3 more songs to this XML document. Include a title and artist for each song.
+  <songs>
+  <song>
+    <title>My Way</title>
+    <artist>Frank Sinatra</artist>
+  </song>
+    <song>
+    <title>My Way</title>
+    <artist>Frank Sinatra</artist>
+  </song>
+    <song>
+    <title>My Way</title>
+    <artist>Frank Sinatra</artist>
+  </song>
+    <song>
+    <title>My Way</title>
+    <artist>Frank Sinatra</artist>
+  </song>
+  </songs>
