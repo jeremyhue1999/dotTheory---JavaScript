@@ -3,15 +3,21 @@ const wikiUrl = "https://en.wikipedia.org/api/rest_v1/page/summary/";
 const peopleList = document.getElementById("people");
 const btn = document.querySelector("button");
 
-function getProfiles(json) {
-  const profiles = json.people.map((person) => {
+async function getJSON(url) {
+  try {
+    const response = await fetch(url);
+    return await response.json();
+  } catch (e) {
+    throw e;
+  }
+}
+
+async function getPeopleInSpace(url) {
+  const peopleJSON = await getJSON(url);
+  const profiles = peopleJSON.people.map(async (person) => {
     const craft = person.craft;
-    return fetch(wikiUrl + person.name)
-      .then((response) => response.json())
-      .then((profile) => {
-        return { ...profile, craft };
-      })
-      .catch((err) => console.log("error fetching Wiki: ", err));
+    const profileJSON = await getJSON(wikiUrl + person.name);
+    return { ...profileJSON, craft };
   });
   return Promise.all(profiles);
 }
@@ -44,14 +50,13 @@ function generateHTML(data) {
 }
 btn.addEventListener("click", (event) => {
   event.target.textContent = "Loading...";
-  fetch(astrosUrl)
-    .then((response) => response.json())
-    .then(getProfiles)
+  getPeopleInSpace(astrosUrl)
     .then(generateHTML)
-    .catch((err) => {
+    .catch((e) => {
       peopleList.innerHTML = `<h3>Something went wrong</h3>`;
-      console.log(err);
+      console.error(e);
     })
-
-    .finally(() => event.target.remove());
+    .finally(() => {
+      event.target.remove();
+    });
 });
