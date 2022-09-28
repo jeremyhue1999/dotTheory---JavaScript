@@ -1,5 +1,4 @@
 function getYear() {
-  const year = new Date().getFullYear();
-  return year;
+  return new Date().getFullYear();
 }
 const yearToday = getYear();

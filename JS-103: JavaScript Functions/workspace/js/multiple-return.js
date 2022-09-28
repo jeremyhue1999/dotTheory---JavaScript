@@ -3,7 +3,7 @@ function isFieldEmpty() {
   if (!field.value) {
     return true;
   } else {
-    false;
+    return false;
   }
 }
 const fieldTest = isFieldEmpty();
