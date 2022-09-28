@@ -8,5 +8,3 @@ do {
   console.log(getRandomNumber(19));
   counter++;
 } while (counter < 10);
-{
-}
