@@ -1,0 +1,11 @@
+//Use a <song> tag to add a new 'song' to this XML document.
+//Adds a song title by inserting a <title> tag inside the <song> tag. Puts the name of any song you'd like inside it.
+//adds an artist tag with the artist of the song
+
+<?xml version="1.0" encoding="UTF-8"?>
+<songs>
+<song>
+  <title>ABCD</title>
+  <artist>John lemon</artist>
+</song>
+</songs>
